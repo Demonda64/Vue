@@ -13,14 +13,10 @@
 <body>
 
     <div id="mon-app">
-
         <h1>Cool man</h1>
-        <p>{{ txt }}</p>
-        <p>{{ presentation() }}</p>
-        <a v-bind:href="UrlFreezer">Le Vaisseau Mère de Freezer</a>
-
-        <img v-bind:src="ImgFreezer">
-
+        <button v-on:click="augmente">Augmente</button>
+        <button v-on:click="compteur--">Baisse </button>
+        <h2>Compteur: {{ compteur }}</h2>    
     </div>
   
 
@@ -31,16 +27,16 @@
         new Vue({
             el: '#mon-app',
             data: {
-                txt: 'Wsh le S',
-                name: 'Bonjour, je suis Freezer',
-                UrlFreezer: 'https://fr.wikipedia.org/wiki/Freezer',
-                ImgFreezer: 'https://www.serieously.com/app/uploads/2021/04/freezer-768x432-c-default.webp',
+                compteur : 0
             },
             methods: {
-                presentation: function(){
-                    return this.name;
+                augmente : function(){
+                    this.compteur++;
+                },
+                baisse : function(){
+                    this.compteur--;
                 }
-            }
+                }
         })
 
 
