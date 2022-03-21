@@ -28,12 +28,11 @@
         <h1>Cool man</h1>
         <button @click="toggleBox = !toggleBox">Toggle la couleur</button>
         
-        <template v-if="toggleBox">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, amet.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, amet.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, amet.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, amet.</p>
-        </template>
+        <ul>
+            <li v-for="obj in objDbz">
+                <div v-for="(val, props) in obj">{{props}} : {{val}}</div>
+            </li>
+        </ul>
         
     </div>
 
@@ -44,6 +43,11 @@
         new Vue({
             el: '#mon-app',
             data: {
+                objDbz: [
+                    {race:'Sayan',age:35,poids: "75 kg"},
+                    {race:'Sayan',age:35,poids: "75 kg"},
+                    {race:'Sayan',age:35,poids: "75 kg"},
+            ],
                 toggleBox : true,
            }      
         })
