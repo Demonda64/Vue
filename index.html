@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue JS Playground</title>
-</head>
+    <style>
 
-<style>
-    canvas {
-        width: 300px;
-        height: 200px;
-        border: 1px solid #333;
-    }
-</style>
+        .box {
+            width: 250px;
+            height: 250px;
+            border: 1px solid #333;
+        }
+        .red {
+            background: crimson;
+        }
+        .bordure {
+            border: 10px solid #333;
+        }
+    </style>
+
+</head>
 
 <body>
 
     <div id="mon-app">
         <h1>Cool man</h1>
-        <button v-on:click="augmente">Augmente</button>
-        <button v-on:click="compteur--">Baisse </button>
-        <h2>Compteur: {{ compteur }}</h2>
-        <canvas v-on:mousemove="coords"></canvas>
-        <p>{{ x }} / {{ y }}</p> 
-
-        <div v-on:click="foo">
-            <p>Lorem ipsum  <button v-on:click.stop="foo">Cliquez ici</button></p>
-           
-        </div>
-
+        <button @click="toggleBox = !toggleBox">Toggle la couleur</button>
+        
+        <template v-if="toggleBox">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, amet.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, amet.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, amet.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, amet.</p>
+        </template>
+        
     </div>
-  
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
@@ -41,27 +44,8 @@
         new Vue({
             el: '#mon-app',
             data: {
-                compteur : 0,
-                x:0,
-                y:0,
-            },
-            methods: {
-                foo: function(){
-                    console.log("c'est carré");
-
-                },
-                augmente : function(){
-                    this.compteur++;
-                },
-                baisse : function(){
-                    this.compteur--;
-                },
-                coords : function(e){
-                    // console.log(e)
-                    this.x = e.offsetX;
-                    this.y = e.offsetY;
-                }
-            }
+                toggleBox : true,
+           }      
         })
 
 
